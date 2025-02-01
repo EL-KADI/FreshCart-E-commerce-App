@@ -86,7 +86,7 @@ export default function Navbar() {
                         <FaShoppingCart className="text-black text-4xl h-10 group-hover:text-[#4FA74F] transition-all duration-300" />
 
                         <div className="absolute inline-flex items-center group-hover:bg-black justify-center w-6 h-6 text-xs font-bold text-white transition-all duration-300 bg-[#4FA74F] border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                          {cartCount} {/* عرض عدد المنتجات في العربة */}
+                          {cartCount} 
                         </div>
                       </span>
                     </Link>

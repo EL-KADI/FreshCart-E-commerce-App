@@ -17,7 +17,7 @@ import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import WishList from "./Components/WishList/WishList";
 import Checkout from "./Components/CheckOut/CheckOut";
-import CartProtectedRoute from "./Components/CartProtectedRoute/CartProtectedRoute"; 
+import CartProtectedRoute from "./Components/CartProtectedRoute/CartProtectedRoute";
 import AllOrders from "./Components/AllOrders/AllOrders";
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
             </ProtectedRoute>
           ),
         },
-    
+
         {
           path: "/checkout",
           element: (
@@ -87,8 +87,7 @@ function App() {
             </ProtectedRoute>
           ),
         },
-   
-     
+
         {
           path: "/categories",
           element: (
@@ -163,7 +162,12 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <div className="hidden"></div>
+    </>
+  );
 }
 
 export default App;
