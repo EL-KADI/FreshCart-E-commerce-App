@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { UserContext } from "../UserContext/UserContext";
 import { CartContext } from "../CartContext/CartContext";
+import { initFlowbite } from "flowbite";
 
 export default function Navbar() {
+  useEffect(() => {
+    initFlowbite();
+  }, []);
   const { isLogin, setToken } = useContext(UserContext);
   const { cartCount } = useContext(CartContext);
   const navigate = useNavigate();
@@ -37,12 +41,30 @@ export default function Navbar() {
               FreshCart
             </span>
           </span>
-        <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-  <span className="sr-only">Open main menu</span>
-  <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />
-  </svg>
-</button>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
 
           <div
             className="hidden w-full gap-6 grow lg:flex lg:w-auto"
@@ -86,7 +108,7 @@ export default function Navbar() {
                         <FaShoppingCart className="text-black text-4xl h-10 group-hover:text-[#4FA74F] transition-all duration-300" />
 
                         <div className="absolute inline-flex items-center group-hover:bg-black justify-center w-6 h-6 text-xs font-bold text-white transition-all duration-300 bg-[#4FA74F] border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                          {cartCount} 
+                          {cartCount}
                         </div>
                       </span>
                     </Link>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
@@ -19,8 +19,12 @@ import WishList from "./Components/WishList/WishList";
 import Checkout from "./Components/CheckOut/CheckOut";
 import CartProtectedRoute from "./Components/CartProtectedRoute/CartProtectedRoute";
 import AllOrders from "./Components/AllOrders/AllOrders";
+import { initFlowbite } from "flowbite";
 
 function App() {
+  useEffect(() => {
+    initFlowbite();
+  }, []);
   const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false);
 
   const router = createBrowserRouter([
@@ -162,12 +166,7 @@ function App() {
     },
   ]);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-      <div className="hidden"></div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
