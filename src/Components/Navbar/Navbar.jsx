@@ -103,7 +103,7 @@ export default function Navbar() {
               {isLogin && (
                 <li>
                   <div className="flex gap-5 lg:flex-row flex-col">
-                    <Link className="group  " to={"cart"}>
+                    <Link className="group  " to={"/cart"}>
                       <span className="relative  me-auto lg:ms-0 inline-flex items-center text-sm font-medium text-center text-white">
                         <FaShoppingCart className="text-black text-4xl h-10 group-hover:text-[#4FA74F] transition-all duration-300" />
 

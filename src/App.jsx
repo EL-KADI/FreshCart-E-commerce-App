@@ -24,7 +24,8 @@ import { initFlowbite } from "flowbite";
 function App() {
   useEffect(() => {
     initFlowbite();
-  }, []);
+  }); // ✅ يتم تشغيله عند كل إعادة رندر
+
   const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false);
 
   const router = createBrowserRouter([
@@ -56,7 +57,6 @@ function App() {
             </ProtectedRoute>
           ),
         },
-
         {
           path: "/checkout",
           element: (
@@ -91,7 +91,6 @@ function App() {
             </ProtectedRoute>
           ),
         },
-
         {
           path: "/categories",
           element: (
@@ -144,9 +143,7 @@ function App() {
           path: "/forget-password",
           element: (
             <AuthProtected>
-              <ForgetPassword
-                setForgotPasswordVisited={setForgotPasswordVisited}
-              />
+              <ForgetPassword setForgotPasswordVisited={setForgotPasswordVisited} />
             </AuthProtected>
           ),
         },
