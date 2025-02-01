@@ -24,7 +24,7 @@ import { initFlowbite } from "flowbite";
 function App() {
   useEffect(() => {
     initFlowbite();
-  }); // ✅ يتم تشغيله عند كل إعادة رندر
+  });
 
   const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false);
 
@@ -143,7 +143,9 @@ function App() {
           path: "/forget-password",
           element: (
             <AuthProtected>
-              <ForgetPassword setForgotPasswordVisited={setForgotPasswordVisited} />
+              <ForgetPassword
+                setForgotPasswordVisited={setForgotPasswordVisited}
+              />
             </AuthProtected>
           ),
         },
