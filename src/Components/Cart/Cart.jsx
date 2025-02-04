@@ -8,7 +8,6 @@ export default function Cart() {
     cartCount,
     removeProductFromCart,
     updateProductQuantity,
-    CheckOutSession,
     fetchCart,
     clearCart, 
   } = useContext(CartContext);

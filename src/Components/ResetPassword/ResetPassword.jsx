@@ -72,7 +72,7 @@ export default function ResetPassword() {
       >
         <h2 className="text-2xl text-mainclr my-7 font-bold">Reset Password</h2>
 
-        {/* حقل الإيميل */}
+       
         <div className="relative z-0 w-full mb-5 group">
           <input
             onChange={formik.handleChange}

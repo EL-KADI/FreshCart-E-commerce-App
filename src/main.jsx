@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CartContextProvider from "./Components/CartContext/CartContext.jsx";
+import { WishlistProvider } from "./Components/WishlistContext/WishlistContext.jsx";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,9 @@ createRoot(document.getElementById("root")).render(
     <ReactQueryDevtools />
     <CartContextProvider>
       <UserContextProvider>
-        <App />
+        <WishlistProvider>
+          <App />
+        </WishlistProvider>
       </UserContextProvider>
     </CartContextProvider>
   </QueryClientProvider>

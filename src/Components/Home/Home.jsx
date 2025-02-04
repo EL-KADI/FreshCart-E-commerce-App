@@ -36,7 +36,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <>
-        <div className="mb-4 "></div>
+        <div className="mb-4"></div>
         <div className="grid gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 ">
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
@@ -81,7 +81,7 @@ export default function Home() {
       </div>
     );
   }
-  
+
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );

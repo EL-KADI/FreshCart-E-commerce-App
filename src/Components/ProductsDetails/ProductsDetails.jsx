@@ -1,14 +1,18 @@
 import { FaStar } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { CartContext } from "../CartContext/CartContext"; // استيراد CartContext
+import { CartContext } from "../CartContext/CartContext";
+import { WishlistContext } from "../WishlistContext/WishlistContext";
+import { FaHeart } from "react-icons/fa";
 
 export default function ProductsDetails() {
   const { pid, cid } = useParams();
   const navigate = useNavigate();
-  const { addProductToCart } = useContext(CartContext); // استخدام addProductToCart من CartContext
+  const { addProductToCart } = useContext(CartContext);
+  const { isInWishlist, toggleWishlist } = useContext(WishlistContext);
+  const [error, setError] = useState(null);
 
   async function fetchProductDetails() {
     const { data } = await axios.get(
@@ -57,17 +61,16 @@ export default function ProductsDetails() {
     }
   }, [pid, cid, refetchProductDetails, refetchSimilarProducts]);
 
-  // Function to handle adding product to cart
   async function handelAddProducToCart(id) {
     try {
       const res = await addProductToCart(id);
       if (res.data.status === "success") {
-        console.log("Product added to cart:", res.data);
+        setError(null);
       } else {
-        console.error("Failed to add product to cart:", res.data.message);
+        setError(res.data.message || "Failed to add product to cart");
       }
     } catch (error) {
-      console.error("Error adding product to cart:", error);
+      setError(error.response?.data?.message || "Error adding product to cart");
     }
   }
 
@@ -127,6 +130,12 @@ export default function ProductsDetails() {
 
   return (
     <>
+      {error && (
+        <div className="fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded z-50">
+          <p className="font-bold">Error</p>
+          <p>{error}</p>
+        </div>
+      )}
       <div className="grid grid-cols-12 gap-5">
         <div className="md:col-span-4 col-span-12">
           <img
@@ -142,20 +151,32 @@ export default function ProductsDetails() {
           <div className="flex justify-between mb-2">
             <span className="font-bold mt-2">{productsDetails.price} EGP</span>
             <span className="flex items-center gap-2">
-              {productsDetails.ratingsAverage}{" "}
+              {productsDetails.ratingsAverage}
               <FaStar className="text-yellow-300" />
             </span>
           </div>
         </div>
       </div>
       <div className="grid grid-cols-12 mt-10 md:mt-0">
-        <div className="col-span-12 flex w-96 justify-center mx-auto">
-          <button
-            onClick={() => handelAddProducToCart(productsDetails._id)}
-            className="text-white text-center w-96 mx-auto bg-mainclrbold mt-2 hover:bg-mainclrbold focus:ring-4 focus:ring-mainclrbg-mainclrbold font-medium rounded-lg text-sm py-2.5 me-2 mb-2 dark:bg-mainclrbold dark:hover:bg-mainclrbold focus:outline-none dark:focus:ring-mainclrbg-mainclrbold"
-          >
-            Add Product
-          </button>
+        <div className="col-span-12 flex w-full mx-auto items-center overflow-hidden">
+          <div className="ms-auto">
+            <button
+              onClick={() => handelAddProducToCart(productsDetails._id)}
+              className="text-white text-center md:w-96 w-52 mx-auto bg-mainclrbold mt-2 hover:bg-[#2f8a30] transition-all duration-300 focus:ring-4 focus:ring-mainclrbg-mainclrbold font-medium rounded-lg text-sm py-2.5 me-2 mb-2 dark:bg-mainclrbold dark:hover:bg-mainclrbold focus:outline-none dark:focus:ring-mainclrbg-mainclrbold"
+            >
+              Add Product
+            </button>
+          </div>
+          <div className="ms-auto">
+            <FaHeart
+              onClick={() => toggleWishlist(productsDetails._id)}
+              className={`text-4xl transition-all duration-300 cursor-pointer ${
+                isInWishlist(productsDetails._id)
+                  ? "text-[#e31b23]"
+                  : "text-black hover:text-[#e31b23]"
+              }`}
+            />
+          </div>
         </div>
       </div>
       <div className="my-40 lg:mt-32 lg:my-0 lg:mb-10">
