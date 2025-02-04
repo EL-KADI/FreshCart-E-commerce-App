@@ -58,7 +58,7 @@ function App() {
           ),
         },
         {
-          path: "/checkout",
+          path: "checkout",
           element: (
             <ProtectedRoute>
               <CartProtectedRoute>
@@ -68,7 +68,7 @@ function App() {
           ),
         },
         {
-          path: "/wishList",
+          path: "wishList",
           element: (
             <ProtectedRoute>
               <WishList />
@@ -76,7 +76,7 @@ function App() {
           ),
         },
         {
-          path: "/brands",
+          path: "brands",
           element: (
             <ProtectedRoute>
               <Brands />
@@ -84,7 +84,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/allorders",
+          path: "FreshCart-E-commerce-App/allorders",
           element: (
             <ProtectedRoute>
               <AllOrders />
@@ -92,7 +92,7 @@ function App() {
           ),
         },
         {
-          path: "/categories",
+          path: "categories",
           element: (
             <ProtectedRoute>
               <Categories />
@@ -100,7 +100,7 @@ function App() {
           ),
         },
         {
-          path: "/products",
+          path: "products",
           element: (
             <ProtectedRoute>
               <Products />
@@ -108,7 +108,7 @@ function App() {
           ),
         },
         {
-          path: "/productsDetails/:pid/:cid",
+          path: "productsDetails/:pid/:cid",
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -116,7 +116,7 @@ function App() {
           ),
         },
         {
-          path: "/products/productsDetails/:pid/:cid",
+          path: "products/productsDetails/:pid/:cid",
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -124,7 +124,7 @@ function App() {
           ),
         },
         {
-          path: "/register",
+          path: "register",
           element: (
             <AuthProtected>
               <Register />
@@ -132,7 +132,7 @@ function App() {
           ),
         },
         {
-          path: "/login",
+          path: "login",
           element: (
             <AuthProtected>
               <Login />
@@ -140,7 +140,7 @@ function App() {
           ),
         },
         {
-          path: "/forget-password",
+          path: "forget-password",
           element: (
             <AuthProtected>
               <ForgetPassword
@@ -150,7 +150,7 @@ function App() {
           ),
         },
         {
-          path: "/reset-password",
+          path: "reset-password",
           element: (
             <AuthProtected>
               {forgotPasswordVisited ? <ResetPassword /> : <Notfound />}
