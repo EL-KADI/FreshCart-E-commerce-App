@@ -42,7 +42,15 @@ function App() {
           ),
         },
         {
-          path: "cart",
+          path: "/cart",
+          element: (
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/FreshCart-E-commerce-App/cart",
           element: (
             <ProtectedRoute>
               <Cart />
@@ -58,7 +66,7 @@ function App() {
           ),
         },
         {
-          path: "checkout",
+          path: "/checkout",
           element: (
             <ProtectedRoute>
               <CartProtectedRoute>
@@ -68,7 +76,7 @@ function App() {
           ),
         },
         {
-          path: "wishList",
+          path: "/wishList",
           element: (
             <ProtectedRoute>
               <WishList />
@@ -76,7 +84,15 @@ function App() {
           ),
         },
         {
-          path: "brands",
+          path: "/FreshCart-E-commerce-App/wishList",
+          element: (
+            <ProtectedRoute>
+              <WishList />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/brands",
           element: (
             <ProtectedRoute>
               <Brands />
@@ -84,7 +100,7 @@ function App() {
           ),
         },
         {
-          path: "FreshCart-E-commerce-App/allorders",
+          path: "/FreshCart-E-commerce-App/allorders",
           element: (
             <ProtectedRoute>
               <AllOrders />
@@ -92,7 +108,7 @@ function App() {
           ),
         },
         {
-          path: "categories",
+          path: "/categories",
           element: (
             <ProtectedRoute>
               <Categories />
@@ -100,7 +116,15 @@ function App() {
           ),
         },
         {
-          path: "products",
+          path: "/FreshCart-E-commerce-App/categories",
+          element: (
+            <ProtectedRoute>
+              <Categories />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/products",
           element: (
             <ProtectedRoute>
               <Products />
@@ -108,7 +132,15 @@ function App() {
           ),
         },
         {
-          path: "productsDetails/:pid/:cid",
+          path: "/FreshCart-E-commerce-App/products",
+          element: (
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/productsDetails/:pid/:cid",
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -116,7 +148,7 @@ function App() {
           ),
         },
         {
-          path: "products/productsDetails/:pid/:cid",
+          path: "/FreshCart-E-commerce-App/productsDetails/:pid/:cid",
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -124,7 +156,23 @@ function App() {
           ),
         },
         {
-          path: "register",
+          path: "/products/productsDetails/:pid/:cid",
+          element: (
+            <ProtectedRoute>
+              <ProductDetails />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/FreshCart-E-commerce-App/products/productsDetails/:pid/:cid",
+          element: (
+            <ProtectedRoute>
+              <ProductDetails />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/register",
           element: (
             <AuthProtected>
               <Register />
@@ -132,7 +180,7 @@ function App() {
           ),
         },
         {
-          path: "login",
+          path: "/login",
           element: (
             <AuthProtected>
               <Login />
@@ -140,7 +188,7 @@ function App() {
           ),
         },
         {
-          path: "forget-password",
+          path: "/forget-password",
           element: (
             <AuthProtected>
               <ForgetPassword
@@ -150,7 +198,7 @@ function App() {
           ),
         },
         {
-          path: "reset-password",
+          path: "/reset-password",
           element: (
             <AuthProtected>
               {forgotPasswordVisited ? <ResetPassword /> : <Notfound />}
