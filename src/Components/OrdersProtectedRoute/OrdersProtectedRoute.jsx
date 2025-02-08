@@ -2,9 +2,10 @@ import { Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 export default function OrdersProtectedRoute({ children }) {
-  const shippingAddress = Cookies.get("shippingAddress");
+  const paymentStatus = Cookies.get("paymentStatus");
   
-  if (!shippingAddress) {
+
+  if (paymentStatus !== "completed") {
     return <Navigate to="/" replace />;
   }
   
