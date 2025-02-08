@@ -1,21 +1,25 @@
 import { ImCheckmark } from "react-icons/im";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function AllOrders() {
   const navigate = useNavigate();
   const location = useLocation();
-  const redirectStatus = new URLSearchParams(location.search).get(
-    "redirect_status"
-  );
+  const [isPaymentVerified, setIsPaymentVerified] = useState(false);
 
   useEffect(() => {
-    if (redirectStatus !== "succeeded") {
+    const params = new URLSearchParams(location.search);
+    const paymentIntent = params.get("payment_intent");
+    const redirectStatus = params.get("redirect_status");
+
+    if (redirectStatus === "succeeded" && paymentIntent) {
+      setIsPaymentVerified(true);
+    } else {
       navigate("/FreshCart-E-commerce-App");
     }
-  }, [redirectStatus, navigate]);
+  }, [location, navigate]);
 
-  if (redirectStatus !== "succeeded") return null;
+  if (!isPaymentVerified) return null;
 
   return (
     <div className="h-[50vh] absolute inset-0 translate-y-[50%]">
