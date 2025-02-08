@@ -1,17 +1,21 @@
 import { ImCheckmark } from "react-icons/im";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function AllOrders() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectStatus = new URLSearchParams(location.search).get(
+    "redirect_status"
+  );
 
   useEffect(() => {
-    
-    return () => {
-      Cookies.remove("paymentStatus");
-    };
-  }, []);
+    if (redirectStatus !== "succeeded") {
+      navigate("/FreshCart-E-commerce-App");
+    }
+  }, [redirectStatus, navigate]);
+
+  if (redirectStatus !== "succeeded") return null;
 
   return (
     <div className="h-[50vh] absolute inset-0 translate-y-[50%]">

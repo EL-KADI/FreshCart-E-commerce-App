@@ -1,12 +1,12 @@
-import { Navigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import { Navigate, useLocation } from 'react-router-dom';
 
 export default function OrdersProtectedRoute({ children }) {
-  const paymentStatus = Cookies.get("paymentStatus");
+  const location = useLocation();
+  const redirectStatus = new URLSearchParams(location.search).get("redirect_status");
   
-
-  if (paymentStatus !== "completed") {
-    return <Navigate to="/" replace />;
+ 
+  if (redirectStatus !== "succeeded") {
+    return <Navigate to="/FreshCart-E-commerce-App" replace />;
   }
   
   return children;
