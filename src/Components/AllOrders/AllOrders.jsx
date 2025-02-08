@@ -10,7 +10,6 @@ export default function AllOrders() {
   useEffect(() => {
     const shippingAddress = Cookies.get("shippingAddress");
 
-    
     if (!shippingAddress) {
       navigate("/");
     } else {
@@ -19,13 +18,13 @@ export default function AllOrders() {
 
     const path = window.location.pathname;
     if (path === "/") {
-      Cookies.remove("shippingAddress"); 
+      Cookies.remove("shippingAddress");
     }
   }, [navigate]);
 
   useEffect(() => {
     if (isRedirecting) {
-      navigate("https://el-kadi.github.io/FreshCart-E-commerce-App/allorders");
+      navigate("/allorders");
     }
   }, [isRedirecting, navigate]);
 
