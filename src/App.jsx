@@ -17,6 +17,7 @@ import ResetPassword from './Components/ResetPassword/ResetPassword'
 import WishList from './Components/WishList/WishList'
 import Checkout from './Components/CheckOut/CheckOut'
 import CartProtectedRoute from './Components/CartProtectedRoute/CartProtectedRoute'
+import OrdersProtectedRoute from './Components/OrdersProtectedRoute/OrdersProtectedRoute'
 import AllOrders from './Components/AllOrders/AllOrders'
 import { initFlowbite } from 'flowbite'
 import './App.css'
@@ -79,7 +80,9 @@ function App() {
           path: 'allorders',
           element: (
             <ProtectedRoute>
-              <AllOrders />
+              <OrdersProtectedRoute>
+                <AllOrders />
+              </OrdersProtectedRoute>
             </ProtectedRoute>
           ),
         },
