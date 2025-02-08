@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createHashRouter } from 'react-router-dom'
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
 import Cart from './Components/Cart/Cart'
@@ -27,9 +27,8 @@ function App() {
   }, [])
 
   const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false)
-  const baseUrl = '/FreshCart-E-commerce-App'
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: '/',
       element: <Layout />,
@@ -154,9 +153,7 @@ function App() {
         },
       ],
     },
-  ], {
-    basename: baseUrl
-  })
+  ])
 
   return <RouterProvider router={router} />
 }
