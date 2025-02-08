@@ -1,36 +1,37 @@
-import { useEffect, useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
-import Layout from "./Components/Layout/Layout";
-import Home from "./Components/Home/Home";
-import Cart from "./Components/Cart/Cart";
-import Brands from "./Components/Brands/Brands";
-import Categories from "./Components/Categories/Categories";
-import Products from "./Components/Products/Products";
-import Register from "./Components/Register/Register";
-import Login from "./Components/Login/Login";
-import Notfound from "./Components/Notfound/Notfound";
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import AuthProtected from "./Components/AuthProtected/AuthProtected";
-import ProductDetails from "./Components/ProductsDetails/ProductsDetails";
-import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
-import ResetPassword from "./Components/ResetPassword/ResetPassword";
-import WishList from "./Components/WishList/WishList";
-import Checkout from "./Components/CheckOut/CheckOut";
-import CartProtectedRoute from "./Components/CartProtectedRoute/CartProtectedRoute";
-import AllOrders from "./Components/AllOrders/AllOrders";
-import { initFlowbite } from "flowbite";
+import { useState, useEffect } from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Layout from './Components/Layout/Layout'
+import Home from './Components/Home/Home'
+import Cart from './Components/Cart/Cart'
+import Brands from './Components/Brands/Brands'
+import Categories from './Components/Categories/Categories'
+import Products from './Components/Products/Products'
+import Register from './Components/Register/Register'
+import Login from './Components/Login/Login'
+import Notfound from './Components/Notfound/Notfound'
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
+import AuthProtected from './Components/AuthProtected/AuthProtected'
+import ProductDetails from './Components/ProductsDetails/ProductsDetails'
+import ForgetPassword from './Components/ForgetPassword/ForgetPassword'
+import ResetPassword from './Components/ResetPassword/ResetPassword'
+import WishList from './Components/WishList/WishList'
+import Checkout from './Components/CheckOut/CheckOut'
+import CartProtectedRoute from './Components/CartProtectedRoute/CartProtectedRoute'
+import AllOrders from './Components/AllOrders/AllOrders'
+import { initFlowbite } from 'flowbite'
+import './App.css'
 
 function App() {
   useEffect(() => {
-    initFlowbite();
-  });
+    initFlowbite()
+  }, [])
 
-  const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false);
+  const [forgotPasswordVisited, setForgotPasswordVisited] = useState(false)
+  const baseUrl = '/FreshCart-E-commerce-App'
 
   const router = createBrowserRouter([
     {
-      path: "",
+      path: '/',
       element: <Layout />,
       children: [
         {
@@ -42,7 +43,7 @@ function App() {
           ),
         },
         {
-          path: "/cart",
+          path: 'cart',
           element: (
             <ProtectedRoute>
               <Cart />
@@ -50,23 +51,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/cart",
-          element: (
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/FreshCart-E-commerce-App",
-          element: (
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/checkout",
+          path: 'checkout',
           element: (
             <ProtectedRoute>
               <CartProtectedRoute>
@@ -76,7 +61,7 @@ function App() {
           ),
         },
         {
-          path: "/wishList",
+          path: 'wishList',
           element: (
             <ProtectedRoute>
               <WishList />
@@ -84,15 +69,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/wishList",
-          element: (
-            <ProtectedRoute>
-              <WishList />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/brands",
+          path: 'brands',
           element: (
             <ProtectedRoute>
               <Brands />
@@ -100,7 +77,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/allorders",
+          path: 'allorders',
           element: (
             <ProtectedRoute>
               <AllOrders />
@@ -108,7 +85,7 @@ function App() {
           ),
         },
         {
-          path: "/categories",
+          path: 'categories',
           element: (
             <ProtectedRoute>
               <Categories />
@@ -116,15 +93,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/categories",
-          element: (
-            <ProtectedRoute>
-              <Categories />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/products",
+          path: 'products',
           element: (
             <ProtectedRoute>
               <Products />
@@ -132,15 +101,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/products",
-          element: (
-            <ProtectedRoute>
-              <Products />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/productsDetails/:pid/:cid",
+          path: 'productsDetails/:pid/:cid',
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -148,7 +109,7 @@ function App() {
           ),
         },
         {
-          path: "/FreshCart-E-commerce-App/productsDetails/:pid/:cid",
+          path: 'products/productsDetails/:pid/:cid',
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -156,23 +117,7 @@ function App() {
           ),
         },
         {
-          path: "/products/productsDetails/:pid/:cid",
-          element: (
-            <ProtectedRoute>
-              <ProductDetails />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/FreshCart-E-commerce-App/products/productsDetails/:pid/:cid",
-          element: (
-            <ProtectedRoute>
-              <ProductDetails />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/register",
+          path: 'register',
           element: (
             <AuthProtected>
               <Register />
@@ -180,7 +125,7 @@ function App() {
           ),
         },
         {
-          path: "/login",
+          path: 'login',
           element: (
             <AuthProtected>
               <Login />
@@ -188,17 +133,15 @@ function App() {
           ),
         },
         {
-          path: "/forget-password",
+          path: 'forget-password',
           element: (
             <AuthProtected>
-              <ForgetPassword
-                setForgotPasswordVisited={setForgotPasswordVisited}
-              />
+              <ForgetPassword setForgotPasswordVisited={setForgotPasswordVisited} />
             </AuthProtected>
           ),
         },
         {
-          path: "/reset-password",
+          path: 'reset-password',
           element: (
             <AuthProtected>
               {forgotPasswordVisited ? <ResetPassword /> : <Notfound />}
@@ -206,14 +149,16 @@ function App() {
           ),
         },
         {
-          path: "*",
+          path: '*',
           element: <Notfound />,
         },
       ],
     },
-  ]);
+  ], {
+    basename: baseUrl
+  })
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
